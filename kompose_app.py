@@ -30,7 +30,8 @@ origins = [
     "https://qe.vakilsearch.com",
     "https://qe-helpdesk.vakilsearch.com/ml-nw/payment/url/",
     "https://qe.vakilsearch.com/online-trademark-registration",
-    "https://www.google.com"
+    "https://www.google.com",
+    "https://vakilsearch.com/"
 ]
 
 app.add_middleware(
