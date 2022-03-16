@@ -83,7 +83,7 @@ async def root(arbitrary_json: JSONStructure = None):
         url=retrive['paymentUrl']
         print(email,phone,url)
 
-        message=acknowldgement_message(email, phone,input_json,serviceid)
+        message=acknowldgement_message(url)
         return message
     
 
