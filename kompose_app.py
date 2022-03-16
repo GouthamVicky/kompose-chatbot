@@ -118,14 +118,9 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
 
 
 @app.get("/payment/url/{obj}",response_class=HTMLResponse)
-async def payment_page(obj):
-    json = loads(obj)
-    query_result=json
-    print(query_result)
-    print("==================================>")
-    pprint.pprint(query_result)
-    user_id=query_result['sessionID']
-    print(user_id)
+async def payment_page(obj:str):
+    user_id=obj
+    print(obj)
         
     try:
         print(db)
