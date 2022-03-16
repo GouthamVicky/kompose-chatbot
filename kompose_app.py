@@ -137,13 +137,12 @@ async def payment_page(obj):
         print(email,phone,serviceid)
         ticketId=retrive['ticketID']
         paymenturl=retrive["paymentUrl"]
-        print(result)
         url= "https://"+paymenturl
         print(url)
         output={"url":url,"email":email,"phoneNumber":phone,"ticketId":ticketId,"serviceId":serviceid}
         print(output)
         
-        return dumps(output)
+        return output
         
     except Exception as e:
         print(str(e))
