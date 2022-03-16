@@ -74,7 +74,8 @@ def idgeneration(email,phone,obj,service_id):
       print("========>DUPLICATE TICKET ID <=========")
       ticketId=result['data']['ticket']['ticket_details']['ticketId']
       magickey=result['data']['ticket']['ticket_details']['magickey']
-  except:
+  except Exception as e:
+    print(str(e))
     pass
 
   print(ticketId)
