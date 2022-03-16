@@ -1,7 +1,10 @@
 import json
 import requests
 import pprint
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def lead_form_collection(sessionId):
     message="Our experts are on standby to answer any other questions you have. Please provide your details so that we can reach you within 24hrs" 
@@ -32,12 +35,12 @@ def lead_form_collection(sessionId):
                                 "data": {
                                 "placeholder": "Enter your Phone Number",
                                 
-                                "name":"PhoneNumber",
+                                "name":"Phone Number",
                                 "validation": {
                                     "errorText": "Please Enter Valid 10 Digit Mobile Number",
                                     "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
                                 },
-                                "label":"PhoneNumber"
+                                "label":"Phone Number"
                                 },
                                 
                                 "type": "text"

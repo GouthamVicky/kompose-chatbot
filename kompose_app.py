@@ -11,7 +11,11 @@ from typing import Any, Dict, AnyStr, List, Union
 from fastapi.middleware.cors import CORSMiddleware
 from capsule_response import *
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+from pymongo import MongoClient
 
+load_dotenv()
 
 app = FastAPI()
 
@@ -35,6 +39,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+client = MongoClient(os.getenv('mongo_client_url'))
+db=client['kompose_lead_form']
+db=db.myCollection
 
 
 JSONObject = Dict[AnyStr, Any]
@@ -64,6 +71,7 @@ async def root(arbitrary_json: JSONStructure = None):
     if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
         message=lead_form_collection(session_id)
         return message
+    
 
     
 
