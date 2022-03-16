@@ -77,9 +77,20 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
 @app.post("/store/user/details/incorp")
-async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...)):
+async def session_predict(JSONStructure = None):
+    input_json={}
+    for key ,value in arbitrary_json.items():
+        input_json[key.decode("utf-8")]=value
+    
+
+    print(input_json)
+    Email=input_json['Email']
+    PhoneNumber=input_json['PhoneNumber']
+    sessionID=input_json['sessionID']
+
     current_date_and_time = datetime.datetime.now()
-    print(sessionID)
+    
+    print(Email,PhoneNumber,sessionID)
     hours = 5
     minutes =30
     hours_added = datetime.timedelta(hours = hours,minutes=minutes)

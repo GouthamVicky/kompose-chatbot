@@ -35,12 +35,12 @@ def lead_form_collection(sessionId):
                                 "data": {
                                 "placeholder": "Enter your Phone Number",
                                 
-                                "name":"Phone Number",
+                                "name":"PhoneNumber",
                                 "validation": {
                                     "errorText": "Please Enter Valid 10 Digit Mobile Number",
                                     "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
                                 },
-                                "label":"Phone Number"
+                                "label":"PhoneNumber"
                                 },
                                 
                                 "type": "text"
