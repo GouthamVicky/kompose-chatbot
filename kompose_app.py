@@ -61,7 +61,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
 
-    if intent_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
+    if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
         message=lead_form_collection(session_id)
         return output
 
