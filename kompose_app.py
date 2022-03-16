@@ -142,7 +142,7 @@ async def payment_page(obj):
         output={"url":url,"email":email,"phoneNumber":phone,"ticketId":ticketId,"serviceId":serviceid}
         print(output)
         
-        return output
+        return dumps(output)
         
     except Exception as e:
         print(str(e))
