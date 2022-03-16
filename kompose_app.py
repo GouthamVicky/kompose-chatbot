@@ -74,6 +74,17 @@ async def root(arbitrary_json: JSONStructure = None):
         message=lead_form_creation(session_id,1)
         return message
     
+    if input_name.lower()=="submit" or str(intent_number)=="62319adc38b63d0fcc2328c9":
+        retrive=db.find_one({"SessionID":user_id})
+        email=retrive['EmailId']
+        phone=retrive['PhoneNumber']
+        serviceid=retrive['serviceId']
+        url=retrive['paymentUrl']
+        print(email,phone,url)
+
+        message=acknowldgement_message(email, phone,input_json,serviceid)
+        return message
+    
 
     
 
@@ -92,9 +103,14 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     
     current =str(future_date_and_time)
     print(current)
+    
+    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']}
+
+    print("CREATING TICKET ID FOR CUSTOMER")
+    result=idgeneration(Email, PhoneNumber,json,serviceId)
+    print(result)
     print("STORING DATA IN MONGO DB ")
-    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
-    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId})
+    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
     print(json)
     
     return json
