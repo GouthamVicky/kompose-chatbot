@@ -1,5 +1,5 @@
 from requests.sessions import session
-from capsule_response import lead_form_collection
+from capsule_response import lead_form_creation
 from fastapi import FastAPI, Depends,Form,Request, Response
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
@@ -69,7 +69,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
     if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
-        message=lead_form_collection(session_id,1)
+        message=lead_form_creation(session_id,1)
         return message
     
 
