@@ -116,6 +116,39 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     return json
 
 
+@app.get("/payment/url/{obj}",response_class=HTMLResponse)
+async def payment_page(obj):
+    json = loads(obj)
+    query_result=json
+    print(query_result)
+    print("==================================>")
+    pprint.pprint(query_result)
+    user_id=query_result['sessionID']
+    print(user_id)
+        
+    try:
+        retrive=db.find_one({"SessionID":user_id})
+        email=retrive['EmailId']
+        phone=retrive['PhoneNumber']
+        serviceid=retrive['serviceId']
+        print(email,phone,serviceid)
+        ticketId=retrive['ticketID']
+        paymenturl=retrive["paymentUrl"]
+        print(result)
+        url= "https://"+paymenturl
+        print(url)
+        output={"url":url,"email":email,"phoneNumber":phone,"ticketId":ticketId,"serviceId":serviceid}
+        print(output)
+        
+        return dumps(output)
+        
+    except Exception as e:
+        print(str(e))
+        url ="https://vakilsearch.com/online-gst-registration"
+        json={"url":url} 
+        return json
+
+
 if __name__ == "__main__":
 
     uvicorn.run("kompose_app:app", host="0.0.0.0", port=19025, log_level="info", workers = 2,debug=True)
