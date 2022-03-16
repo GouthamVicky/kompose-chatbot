@@ -1,5 +1,4 @@
 from requests.sessions import session
-from capsule_response import lead_form_creation
 from fastapi import FastAPI, Depends,Form,Request, Response
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
@@ -90,7 +89,7 @@ async def root(arbitrary_json: JSONStructure = None):
     
 
 
-@app.post("/store/session")
+@app.post("/kompose/store/session")
 async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
 
     current_date_and_time = datetime.datetime.now()
