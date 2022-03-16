@@ -1,4 +1,5 @@
 from requests.sessions import session
+from capsule_response import lead_form_collection
 from fastapi import FastAPI, Depends,Form,Request, Response
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
@@ -8,6 +9,8 @@ from fastapi import FastAPI, Response, status
 import uvicorn
 from typing import Any, Dict, AnyStr, List, Union
 from fastapi.middleware.cors import CORSMiddleware
+from capsule_response import *
+from datetime import datetime
 
 
 app = FastAPI()
@@ -40,7 +43,7 @@ JSONStructure = Union[JSONArray, JSONObject]
 
 
 
-@app.post("/webhook/")
+@app.post("/webhook/incorp/")
 async def root(arbitrary_json: JSONStructure = None):
     input_json={}
     for key ,value in arbitrary_json.items():
@@ -49,23 +52,41 @@ async def root(arbitrary_json: JSONStructure = None):
 
     print(input_json)
 
-    output=       [{
-            "message": "A message can be simple as a plain text" 
-        }, {
-            "message": "A message can be a rich message containing metadata",
-            "metadata": {
-            "contentType": "300",
-                "templateId": "6",
-                "payload": [{
-                    "title": "Suggested Reply button 1",
-                    "message": "Suggested Reply button 1",
-                }, {
-                    "title": "Suggested Reply button 2",
-                    "message": "Suggested Reply button 2" 
-                }]
-            }
-        }]
-    return output
+    input_name=input_json['matchedIntentName']
+    print("User Message =========== >",input_value)
+    session_id=str(input_json['groupId'])
+    print("User Message =========== >",str(session_id))
+    intent_number=input_json['matchedIntent']
+    print("Intent Number ============>",intent_number)
+
+
+
+    if intent_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
+        message=lead_form_collection(session_id)
+        return output
+
+    
+
+
+@app.post("/store/user/details/incorp")
+async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...)):
+    current_date_and_time = datetime.datetime.now()
+    print(sessionID)
+    hours = 5
+    minutes =30
+    hours_added = datetime.timedelta(hours = hours,minutes=minutes)
+
+    future_date_and_time = current_date_and_time + hours_added
+
+    
+    current =str(future_date_and_time)
+    print(current)
+    print("STORING DATA IN MONGO DB ")
+    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":1}
+    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId})
+    print(json)
+    
+    return json
 
 
 
