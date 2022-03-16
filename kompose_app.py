@@ -77,7 +77,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
 @app.post("/store/user/details/incorp")
-async def session_predict(JSONStructure = None):
+async def session_predict(arbitrary_json: JSONStructure = None):
     input_json={}
     for key ,value in arbitrary_json.items():
         input_json[key.decode("utf-8")]=value
