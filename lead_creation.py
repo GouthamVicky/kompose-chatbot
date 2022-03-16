@@ -1,7 +1,10 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-url = "https://qe-vsapi.vakilsearch.com/api/v1/lead_creation/create_ticket"
+url = os.getenv('lead_creation_url')
 
 
 def idgeneration(email,phone,obj,service_id):
@@ -76,7 +79,7 @@ def idgeneration(email,phone,obj,service_id):
 
   print(ticketId)
   print(magickey)
-  paymentlandingpage="qe.vakilsearch.com/cart/offers?id="+str(ticketId)+"&key="+str(magickey)
+  paymentlandingpage=os.getenv('PaymentUrl')+str(ticketId)+"&key="+str(magickey)
   print(paymentlandingpage)
   result={"ticketId":ticketId,"url":paymentlandingpage}
   return result

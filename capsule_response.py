@@ -22,9 +22,9 @@ def lead_form_creation(userId,serviceid):
                         "templateId": "12",
                          "payload":[ {
                                 "data": {
-                                "placeholder": "Enter your email",
+                                "placeholder": "Your email please",
                                 "validation": {
-                                    "errorText": "Invalid Email",
+                                    "errorText": "Please provide a valid email",
                                     "regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
                                 },
                                 "label": "Email"
@@ -33,11 +33,11 @@ def lead_form_creation(userId,serviceid):
                             },
                             {
                                 "data": {
-                                "placeholder": "Enter your Phone Number",
+                                "placeholder": "Your mobile number please (10 digits)",
                                 
                                 "name":"PhoneNumber",
                                 "validation": {
-                                    "errorText": "Please Enter Valid 10 Digit Mobile Number",
+                                    "errorText": "Please provide a valid 10 digit mobile number",
                                     "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
                                 },
                                 "label":"PhoneNumber"
@@ -63,7 +63,7 @@ def lead_form_creation(userId,serviceid):
                                 "type": "submit",
                                 "data": {
                                 "action": {
-                                    "formAction": "https://dev-ml.vakilsearch.com/mlchatbot/store/session",
+                                    "formAction": os.getenv('form_action_Url'),
                                     "requestType": "application/x-www-form-urlencoded",
                                     "message": "Submit",
 				    "replyText":"hide form template"
