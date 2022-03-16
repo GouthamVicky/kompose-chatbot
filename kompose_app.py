@@ -7,7 +7,7 @@ from json import dump, loads,dumps
 from fastapi import FastAPI, Response, status
 import uvicorn
 from typing import Any, Dict, AnyStr, List, Union
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
