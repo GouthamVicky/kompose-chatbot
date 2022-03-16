@@ -25,7 +25,7 @@ app = FastAPI()
 origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
-    "http://localhost",
+    "http://localhost:3000",
     "http://localhost:3000/online-trademark-registration",
     "https://qe.vakilsearch.com",
     "https://qe-helpdesk.vakilsearch.com/ml-nw/payment/url/",
