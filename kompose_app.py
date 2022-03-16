@@ -69,28 +69,18 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
     if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
-        message=lead_form_collection(session_id)
+        message=lead_form_collection(session_id,1)
         return message
     
 
     
 
 
-@app.post("/store/user/details/incorp")
-async def session_predict(arbitrary_json: JSONStructure = None):
-    input_json={}
-    for key ,value in arbitrary_json.items():
-        input_json[key.decode("utf-8")]=value
-    
-
-    print(input_json)
-    Email=input_json['Email']
-    PhoneNumber=input_json['PhoneNumber']
-    sessionID=input_json['sessionID']
+@app.post("/store/session")
+async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
 
     current_date_and_time = datetime.datetime.now()
-    
-    print(Email,PhoneNumber,sessionID)
+    print(sessionID)
     hours = 5
     minutes =30
     hours_added = datetime.timedelta(hours = hours,minutes=minutes)
@@ -101,12 +91,11 @@ async def session_predict(arbitrary_json: JSONStructure = None):
     current =str(future_date_and_time)
     print(current)
     print("STORING DATA IN MONGO DB ")
-    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":1}
+    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
     store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId})
     print(json)
     
     return json
-
 
 
 if __name__ == "__main__":

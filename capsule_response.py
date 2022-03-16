@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def lead_form_collection(sessionId):
+def lead_form_creation(userId,serviceid):
     message="Our experts are on standby to answer any other questions you have. Please provide your details so that we can reach you within 24hrs" 
     json= [
                         {
@@ -48,15 +48,22 @@ def lead_form_collection(sessionId):
                             {
                                 "type": "hidden",
                                 "data": {
-                                "value": sessionId,
-                                "name": "sessionId"
+                                "value": userId,
+                                "name": "sessionID"
+                                }
+                            },
+                            {
+                                "type": "hidden",
+                                "data": {
+                                "value": serviceid,
+                                "name": "serviceId"
                                 }
                             },
                             {
                                 "type": "submit",
                                 "data": {
                                 "action": {
-                                    "formAction": "https://dev-ml.vakilsearch.com/mlchatbot/store/user/details/incorp",
+                                    "formAction": "https://dev-ml.vakilsearch.com/mlchatbot/store/session",
                                     "requestType": "application/x-www-form-urlencoded",
                                     "message": "Submit",
 				    "replyText":"hide form template"
