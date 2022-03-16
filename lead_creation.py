@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 url = os.getenv('lead_creation_url')
-
+print(url)
 
 def idgeneration(email,phone,obj,service_id):
 
@@ -79,7 +79,7 @@ def idgeneration(email,phone,obj,service_id):
 
   print(ticketId)
   print(magickey)
-  paymentlandingpage=os.getenv('PaymentUrl')+str(ticketId)+"&key="+str(magickey)
+  paymentlandingpage=os.getenv('Paymenturl')+str(ticketId)+"&key="+str(magickey)
   print(paymentlandingpage)
   result={"ticketId":ticketId,"url":paymentlandingpage}
   return result

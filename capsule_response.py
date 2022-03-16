@@ -63,7 +63,7 @@ def lead_form_creation(userId,serviceid):
                                 "type": "submit",
                                 "data": {
                                 "action": {
-                                    "formAction": os.getenv('form_action_Url'),
+                                    "formAction": os.getenv('form_action_url'),
                                     "requestType": "application/x-www-form-urlencoded",
                                     "message": "Submit",
 				    "replyText":"hide form template"
