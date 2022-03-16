@@ -53,7 +53,7 @@ async def root(arbitrary_json: JSONStructure = None):
     print(input_json)
 
     input_name=input_json['matchedIntentName']
-    print("User Message =========== >",input_value)
+    print("User Message =========== >",input_name)
     session_id=str(input_json['groupId'])
     print("User Message =========== >",str(session_id))
     intent_number=input_json['matchedIntent']
