@@ -75,7 +75,7 @@ async def root(arbitrary_json: JSONStructure = None):
         return message
     
     if input_name.lower()=="submit" or str(intent_number)=="62319adc38b63d0fcc2328c9":
-        retrive=db.find_one({"SessionID":user_id})
+        retrive=db.find_one({"SessionID":session_id})
         email=retrive['EmailId']
         phone=retrive['PhoneNumber']
         serviceid=retrive['serviceId']
