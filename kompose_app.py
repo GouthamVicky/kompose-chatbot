@@ -31,7 +31,7 @@ origins = [
     "https://qe-helpdesk.vakilsearch.com/ml-nw/payment/url/",
     "https://qe.vakilsearch.com/online-trademark-registration",
     "https://www.google.com",
-    "https://vakilsearch.com/",
+    "https://vakilsearch.com",
     "https://vakilsearch.com/online-company-registration"
 ]
 
@@ -178,4 +178,4 @@ async def payment_page(obj:str):
 
 if __name__ == "__main__":
 
-    uvicorn.run("kompose_app:app", host="0.0.0.0", port=19025, log_level="info", workers = 2,debug=True)
+    uvicorn.run("kompose_app:app", host="0.0.0.0", port=19032, log_level="info", workers = 2,debug=True)
