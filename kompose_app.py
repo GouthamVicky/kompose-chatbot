@@ -140,7 +140,7 @@ async def session_predict(textarea: str= Form(...),Email: str = Form(...),PhoneN
     result=idgeneration(Email, PhoneNumber,json,serviceId)
     print(result)
     print("STORING DATA IN MONGO DB ")
-    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
+    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"QueryText":textarea,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
     print(store_data)
     
     return json
