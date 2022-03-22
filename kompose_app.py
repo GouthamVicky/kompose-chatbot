@@ -135,7 +135,7 @@ async def session_predict(textarea: str= Form(...),Email: str = Form(...),PhoneN
     print(current)
     
     json= {"TextArea":textarea,"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
-
+    print(json)
     print("CREATING TICKET ID FOR CUSTOMER")
     result=idgeneration(Email, PhoneNumber,json,serviceId)
     print(result)
