@@ -72,7 +72,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
 
-    if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800" or input_name.lower()=="free consultation":
+    if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800" or input_name=="Free Consultation" or str(intent_number)=="6230a49138b63d0fcc23280a":
         message=lead_form_creation(session_id,1)
         return message
     
@@ -86,7 +86,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
         message=acknowldgement_message(url)
         return message
-    if input_name.lower()=="I have a Query":
+    if input_name=="I have a Query" or str(intent_number)=="6230a41739e8290fc89845c1":
         message=lead_form_creation_textarea(session_id,1)
         return message
 
