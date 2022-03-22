@@ -1,0 +1,511 @@
+{
+	"intents": [
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Benefits",
+								"action": {
+									"type": "quickReply",
+									"message": "Benefits"
+								}
+							},
+							{
+								"name": "Process",
+								"action": {
+									"type": "quickReply",
+									"message": "Process"
+								}
+							},
+							{
+								"name": "Documents",
+								"action": {
+									"type": "quickReply",
+									"message": "Documents"
+								}
+							},
+							{
+								"name": "Others",
+								"action": {
+									"type": "quickReply",
+									"message": "Others"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Explore Private Limited",
+			"trainingPhrases": [
+				"Explore Private Limited"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Timelines",
+								"action": {
+									"type": "quickReply",
+									"message": "Timelines"
+								}
+							},
+							{
+								"name": "Pricing",
+								"action": {
+									"type": "quickReply",
+									"message": "Pricing"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Others",
+			"trainingPhrases": [
+				"Others"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "Welcome to Vakilsearch!\n\n🚀 10% of all Indian companies got registered by Vakilsearch"
+				},
+				{
+					"message": "whether you're ready to form your business or still deciding - we are here to assist you"
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Explore Private Limited ",
+								"action": {
+									"type": "quickReply",
+									"message": "Explore Private Limited"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "welcome_event",
+			"name": "Default Welcome Intent",
+			"trainingPhrases": []
+		},
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "9",
+						"payload": [
+							{
+								"caption": "",
+								"url": "https://s3.amazonaws.com/kommunicate-prod.s3/kompose/1647860495738-image861.png"
+							}
+						]
+					}
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Process",
+								"action": {
+									"type": "quickReply",
+									"message": "Process"
+								}
+							},
+							{
+								"name": "I have a Query",
+								"action": {
+									"type": "quickReply",
+									"message": "I have a Query"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Benefits",
+			"trainingPhrases": [
+				"Benefits"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "𝑷𝒓𝒐𝒇𝒆𝒔𝒔𝒊𝒐𝒏𝒂𝒍 𝑭𝒆𝒆𝒔 - ₹999 (𝑬𝒙𝒄𝒍𝒖𝒅𝒊𝒏𝒈 𝑮𝑺𝑻)\n𝑮𝒐𝒗𝒕 𝑭𝒆𝒆𝒔 - ₹5400 (𝑬𝒙𝒄𝒍𝒖𝒅𝒊𝒏𝒈 𝒔𝒕𝒂𝒎𝒑 𝒅𝒖𝒕𝒚)"
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "9",
+						"payload": [
+							{
+								"caption": "",
+								"url": "https://s3.amazonaws.com/kommunicate-prod.s3/kompose/1647871692259-image570.png"
+							}
+						]
+					}
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "I have a Query",
+								"action": {
+									"type": "quickReply",
+									"message": "I have a Query"
+								}
+							},
+							{
+								"name": "Free Consultation",
+								"action": {
+									"type": "quickReply",
+									"message": "Free Consultation"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Pricing",
+			"trainingPhrases": [
+				"Pricing"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "9",
+						"payload": [
+							{
+								"caption": "",
+								"url": "https://s3.amazonaws.com/kommunicate-prod.s3/kompose/1647873515940-image156.png"
+							}
+						]
+					}
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Timelines",
+								"action": {
+									"type": "quickReply",
+									"message": "Timelines"
+								}
+							},
+							{
+								"name": "I have a Query",
+								"action": {
+									"type": "quickReply",
+									"message": "I have a Query"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Documents",
+			"trainingPhrases": [
+				"Documents"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "That looks like something an Agent can understand, Please talk with our expert to resolve your queries"
+				},
+				{
+					"platform": "kommunicate",
+					"metadata": {
+						"KM_ASSIGN_TO": "tools.mobile@vakilsearch.com"
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "fallback_intent",
+			"name": "Default Fallback Intent",
+			"trainingPhrases": []
+		},
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "9",
+						"payload": [
+							{
+								"caption": "",
+								"url": "https://s3.amazonaws.com/kommunicate-prod.s3/kompose/1647874027103-image415.png"
+							}
+						]
+					}
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Documents",
+								"action": {
+									"type": "quickReply",
+									"message": "Documents"
+								}
+							},
+							{
+								"name": "I have a Query",
+								"action": {
+									"type": "quickReply",
+									"message": "I have a Query"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Process",
+			"trainingPhrases": [
+				"Process"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "9",
+						"payload": [
+							{
+								"caption": "",
+								"url": "https://s3.amazonaws.com/kommunicate-prod.s3/kompose/1647874041088-image580.png"
+							}
+						]
+					}
+				},
+				{
+					"message": "",
+					"platform": "kommunicate",
+					"metadata": {
+						"contentType": "300",
+						"templateId": "11",
+						"payload": [
+							{
+								"name": "Free Consultation",
+								"action": {
+									"type": "quickReply",
+									"message": "Free Consultation"
+								}
+							},
+							{
+								"name": "I have a Query",
+								"action": {
+									"type": "quickReply",
+									"message": "I have a Query"
+								}
+							}
+						]
+					}
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Timelines",
+			"trainingPhrases": [
+				"Timelines"
+			]
+		},
+		{
+			"content": [
+				{
+					"metadata": {
+						"contentType": "300",
+						"payload": [
+							{
+								"type": "textarea",
+								"data": {
+									"cols": 10,
+									"validation": {
+										"regex": "^[^*|\\\":<>[\\]{}`\\\\()';@&$]+$",
+										"errorText": "special characters not allowed"
+									},
+									"title": "Please Type in your Query",
+									"name": "review",
+									"rows": 4,
+									"placeholder": "Type here .."
+								}
+							},
+							{
+								"data": {
+									"placeholder": "Enter your email",
+									"validation": {
+										"errorText": "Invalid Email",
+										"regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+									},
+									"label": "Email"
+								},
+								"type": "text"
+							},
+							{
+								"data": {
+									"placeholder": "Enter your Phone Number",
+									"name": "Phone Number",
+									"validation": {
+										"errorText": "Please Enter Valid 10 Digit Mobile Number",
+										"regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
+									},
+									"label": "Phone Number"
+								},
+								"type": "text"
+							},
+							{
+								"data": {
+									"name": "Submit",
+									"action": {
+										"message": "Submit",
+										"formAction": "https://reqres.in/api/users"
+									},
+									"type": "submit"
+								},
+								"type": "submit"
+							}
+						],
+						"templateId": "12"
+					},
+					"platform": "kommunicate"
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "I have a Query",
+			"trainingPhrases": [
+				"I have a Query"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "Fill in your details and an experts will reach out to you",
+					"metadata": {
+						"contentType": "300",
+						"payload": [
+							{
+								"data": {
+									"placeholder": "Enter your email",
+									"validation": {
+										"errorText": "Invalid Email",
+										"regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+									},
+									"label": "Email"
+								},
+								"type": "text"
+							},
+							{
+								"data": {
+									"placeholder": "Enter your Phone Number",
+									"name": "PhoneNumber",
+									"validation": {
+										"errorText": "Please Enter Valid 10 Digit Mobile Number",
+										"regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
+									},
+									"label": "PhoneNumber"
+								},
+								"type": "text"
+							},
+							{
+								"data": {
+									"name": "Submit",
+									"action": {
+										"message": "Submit.",
+										"formAction": "https://reqres.in/api/users"
+									},
+									"type": "submit"
+								},
+								"type": "submit"
+							}
+						],
+						"templateId": "12"
+					},
+					"platform": "kommunicate"
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Free Consultation",
+			"trainingPhrases": [
+				"Free Consultation"
+			]
+		},
+		{
+			"content": [
+				{
+					"message": "Thank you for your enquiry! One of our experts will get back to you within 24 hours."
+				}
+			],
+			"urlPatternList": [],
+			"category": "intent",
+			"name": "Submit",
+			"trainingPhrases": [
+				"Submit"
+			]
+		}
+	]
+}

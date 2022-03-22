@@ -7,7 +7,7 @@ from datetime import datetime
 load_dotenv()
 
 def lead_form_creation(userId,serviceid):
-    message="Our experts are on standby to answer any other questions you have. Please provide your details so that we can reach you within 24hrs" 
+    message="Our experts are on standby to answer any other questions you have. Please provide your details in the below given form" 
     json= [
                         {
                             "message": 
@@ -75,6 +75,89 @@ def lead_form_creation(userId,serviceid):
                     }
                 }]          
     return json
+
+
+def lead_form_creation_textarea(userId,serviceid):
+    message="Our experts are on standby to answer any other questions you have. Please provide your details in the below given form" 
+    json=[
+        {
+                            "message": 
+                            message,
+                            
+                            },
+        {
+            "metadata": {
+                "contentType": "300",
+                "payload": [
+                    {
+                        "type": "textarea",
+                        "data": {
+                            "cols": 10,
+                            "validation": {
+                                "regex": "^[^*|\\\":<>[\\]{}`\\\\()';@&$]+$",
+                                "errorText": "special characters not allowed"
+                            },
+                            "title": "Please Type in your Query",
+                            "name": "textarea",
+                            "rows": 4,
+                            "placeholder": "Type here ..",
+                            "label":"textarea"
+                        }
+                    },
+                    {
+                        "data": {
+                            "placeholder": "Enter your email",
+                            "validation": {
+                                "errorText": "Invalid Email",
+                                "regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+                            },
+                            "label": "Email"
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "data": {
+                            "placeholder": "Enter your Phone Number",
+                            "name": "PhoneNumber",
+                            "validation": {
+                                "errorText": "Please Enter Valid 10 Digit Mobile Number",
+                                "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
+                            },
+                            "label": "PhoneNumber"
+                        },
+                        "type": "text"
+                    },
+                    {
+                                "type": "hidden",
+                                "data": {
+                                "value": userId,
+                                "name": "sessionID"
+                                }
+                            },
+                            {
+                                "type": "hidden",
+                                "data": {
+                                "value": serviceid,
+                                "name": "serviceId"
+                                }
+                            },
+                    {
+                        "data": {
+                            "name": "Submit",
+                            "action": {
+                                "message": "Submit",
+                                "formAction": os.getenv('form_action_text_url')
+                            },
+                            "type": "submit"
+                        },
+                        "type": "submit"
+                    }
+                ],
+                "templateId": "12"
+            },
+            "platform": "kommunicate"
+        }]
+    return json  
 
 def acknowldgement_message(url):
     try:

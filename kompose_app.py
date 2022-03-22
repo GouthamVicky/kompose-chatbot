@@ -72,7 +72,7 @@ async def root(arbitrary_json: JSONStructure = None):
 
 
 
-    if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800":
+    if input_name.lower()=="i have other questions" or str(intent_number)=="623094b838b63d0fcc232800" or input_name.lower()=="free consultation":
         message=lead_form_creation(session_id,1)
         return message
     
@@ -86,7 +86,9 @@ async def root(arbitrary_json: JSONStructure = None):
 
         message=acknowldgement_message(url)
         return message
-    
+    if input_name.lower()=="I have a Query":
+        message=lead_form_creation_textarea(session_id,1)
+        return message
 
     
 
@@ -107,6 +109,32 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     print(current)
     
     json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
+
+    print("CREATING TICKET ID FOR CUSTOMER")
+    result=idgeneration(Email, PhoneNumber,json,serviceId)
+    print(result)
+    print("STORING DATA IN MONGO DB ")
+    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
+    print(store_data)
+    
+    return json
+
+@app.post("/kompose/store/textarea")
+async def session_predict(textarea: str= Form(...),Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
+
+    current_date_and_time = datetime.datetime.now()
+    print(sessionID)
+    hours = 5
+    minutes =30
+    hours_added = datetime.timedelta(hours = hours,minutes=minutes)
+
+    future_date_and_time = current_date_and_time + hours_added
+
+    
+    current =str(future_date_and_time)
+    print(current)
+    
+    json= {"TextArea":textarea,"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
 
     print("CREATING TICKET ID FOR CUSTOMER")
     result=idgeneration(Email, PhoneNumber,json,serviceId)
