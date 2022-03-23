@@ -16,6 +16,7 @@ from pymongo import MongoClient
 import datetime
 from lead_creation import idgeneration
 from fastapi.responses import HTMLResponse
+from gsheetmongodb import gsheet_upload
 
 load_dotenv()
 
@@ -47,6 +48,8 @@ app.add_middleware(
 client = MongoClient(os.getenv('mongo_client_url'))
 db=client['kompose_lead_form']
 db=db.myCollection
+smarti=client['smartichatbot']
+smartiDb=smarti.myCollection
 
 
 JSONObject = Dict[AnyStr, Any]
@@ -56,7 +59,7 @@ JSONStructure = Union[JSONArray, JSONObject]
 
 
 @app.post("/webhook/incorp/")
-async def root(arbitrary_json: JSONStructure = None):
+async def root_incorp(arbitrary_json: JSONStructure = None):
     input_json={}
     for key ,value in arbitrary_json.items():
         input_json[key.decode("utf-8")]=value
@@ -91,8 +94,33 @@ async def root(arbitrary_json: JSONStructure = None):
         message=lead_form_creation_textarea(session_id,1)
         return message
 
+@app.post("/webhook/smarti/")
+async def root_smarti(arbitrary_json: JSONStructure = None):
+    input_json={}
+    for key ,value in arbitrary_json.items():
+        input_json[key.decode("utf-8")]=value
     
-
+    print(input_json)
+    if "matchedIntentName" in input_json.keys():
+        input_name=input_json['matchedIntentName']
+        print("User Message =========== >",input_name) 
+    
+    session_id=str(input_json['groupId'])
+    print("User Message =========== >",str(session_id))
+    intent_number=input_json['matchedIntent']
+    print("Intent Number ============>",intent_number)
+    
+    if str(intent_number)=="623a9c2939e8290fc8985098":
+        question=input_json['message']
+        message=handleUnknown(session_id,question)
+        return message
+    elif input_name=="Book a demo" or str(intent_number)=="623aa1d839e8290fc89850a8":
+        message=demoform(session_id)
+        return message
+    elif input_name=="asking for Question" or str(intent_number)=="623aa59739e8290fc89850ae":
+        message=queryform(session_id)
+        return message
+    
 
 @app.post("/kompose/store/session")
 async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
@@ -120,8 +148,10 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     
     return json
 
+
+
 @app.post("/kompose/store/textarea")
-async def session_predict(textarea: str= Form(...),Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
+async def session_textarea(textarea: str= Form(...),Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
 
     current_date_and_time = datetime.datetime.now()
     print(sessionID)
@@ -147,6 +177,37 @@ async def session_predict(textarea: str= Form(...),Email: str = Form(...),PhoneN
     return json
 
 
+
+
+@app.post("/webhook/smarti/formdata")
+async def humanagentformdata(request:Request):
+    form_data=await request.form()
+    
+    form_data_keys=list(form_data.keys())
+    form_data_values=list(form_data.values())
+    output_json=dict(zip(form_data_keys, form_data_values))
+    current_date_and_time = datetime.datetime.now()
+    hours = 5
+    minutes =30
+    hours_added = datetime.timedelta(hours = hours,minutes=minutes)
+
+    future_date_and_time = current_date_and_time + hours_added
+
+    output_json['Timestamp']=str(future_date_and_time)
+    if "Date" in output_json.keys():
+        output_json['Scheduled Date']=output_json['Date']
+        del output_json['Date']
+    current =str(future_date_and_time)
+    print(current)
+    print("STORING DATA IN MONGO DB ")
+    store_data=smartiDb.insert_one(output_json)
+    gsheet_upload("1hEBL29S5_VN4ExxyG_bTDz98QUhmBOWw7p1IUX6JMvk","CustomerQuerySheet","smartichatbot")
+    return "Done"
+    
+    
+    
+    
+    
 @app.get("/payment/url/{obj}",response_class=HTMLResponse)
 async def payment_page(obj:str):
     user_id=obj
@@ -176,6 +237,9 @@ async def payment_page(obj:str):
         return json
 
 
+
+
+
 if __name__ == "__main__":
 
-    uvicorn.run("kompose_app:app", host="0.0.0.0", port=19032, log_level="info", workers = 2,debug=True)
+    uvicorn.run("kompose_app:app", host="0.0.0.0", port=int(os.getenv("port")), log_level="info", workers = 2,debug=True)

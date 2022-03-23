@@ -219,3 +219,214 @@ def acknowldgement_message(url):
                     }
                 }]          
         return json
+    
+
+
+def demoform(userId):
+    message="If you'd like to book a demo to see Smart i in action, please fill in your details to schedule a call" 
+    json=[
+        {
+                            "message": 
+                            message,
+                            
+                            },
+        {
+            "metadata": {
+                "contentType": "300",
+                "payload": [
+                    {
+                        "data": {
+                            "placeholder": "Enter your email",
+                            "validation": {
+                                "errorText": "Invalid Email",
+                                "regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+                            },
+                            "label": "Email"
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "data": {
+                            "placeholder": "Enter your Phone Number",
+                            "name": "PhoneNumber",
+                            "validation": {
+                                "errorText": "Please Enter Valid 10 Digit Mobile Number",
+                                "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
+                            },
+                            "label": "PhoneNumber"
+                        },
+                        "type": "text"
+                    },
+                    {
+                "type": "datetime-local",
+                "data": {
+                    "label": "Date",
+                    "name":"Scheduled Date"
+                }
+                },
+                    {
+                                "type": "hidden",
+                                "data": {
+                                "value": userId,
+                                "name": "ConvoID"
+                                }
+                            },
+                    {
+                                "type": "hidden",
+                                "data": {
+                                "value": "Book a Demo Call",
+                                "name": "CustomerMotive"
+                                }
+                            },
+                         
+                    {
+                        "data": {
+                            "name": "Submit",
+                            "action": {
+                                "message": "Submit",
+                                "formAction": os.getenv("domainUrl")+"webhook/smarti/formdata"
+                            },
+                            "type": "submit"
+                        },
+                        "type": "submit"
+                    }
+                ],
+                "templateId": "12"
+            },
+            "platform": "kommunicate"
+        }]
+    return json
+
+def queryform(userId):
+    message="Could you please share your Query along with your Email address so that we'll get in touch with you asap!" 
+    json=[
+        {
+                            "message": 
+                            message,
+                            
+                            },
+        {
+            "metadata": {
+                "contentType": "300",
+                "payload": [
+            {
+                "data": {
+                    "placeholder": "Enter your email",
+                    "validation": {
+                        "errorText": "Invalid Email",
+                        "regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+                    },
+                    "label": "Email"
+                },
+                "type": "text"
+            },
+            {
+                "type": "textarea",
+                "data": {
+                    "cols": 10,
+                    "validation": {
+                        "regex": "^[^*|\\\":<>[\\]{}`\\\\()';@&$]+$",
+                        "errorText": "special characters not allowed"
+                    },
+                    "title": "Please Type in your Query",
+                    "name": "textarea",
+                    "rows": 4,
+                    "placeholder": "Type here ..",
+                    "label": "textarea"
+                }
+            },
+             {
+                                "type": "hidden",
+                                "data": {
+                                "value": userId,
+                                "name": "ConvoID"
+                                }
+                            },
+             {
+                                "type": "hidden",
+                                "data": {
+                                "value": "Query Request",
+                                "name": "CustomerMotive"
+                                }
+                            },
+            {
+                "data": {
+                    "name": "Submit",
+                    "action": {
+                        "message": "Submit",
+                        "formAction": os.getenv("domainUrl")+"webhook/smarti/formdata"
+                    },
+                    "type": "submit"
+                },
+                "type": "submit"
+            }
+        ],
+                "templateId": "12"
+            },
+            "platform": "kommunicate"
+        }]
+    return json
+
+def handleUnknown(userId,question):
+    message="Hmm 🤔... I don't have an easy answer to that questions, but if you'd like to share your E-mail, One of our representatives will look into that for you and follow up 😀" 
+    json=[
+        {
+                            "message": 
+                            message,
+                            
+                            },
+        {
+            "metadata": {
+                "message":"Could I get your email address?",
+                "contentType": "300",
+                "payload": [
+            {
+                "data": {
+                    "placeholder": "Enter your email",
+                    "validation": {
+                        "errorText": "Invalid Email",
+                        "regex": "^(([^<>()\\[\\]\\.;:\\s@\"]+(\\.[^<>()[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$"
+                    },
+                    "label": "Email"
+                },
+                "type": "text"
+            },
+             {
+                                "type": "hidden",
+                                "data": {
+                                "value": userId,
+                                "name": "ConvoID"
+                                }
+                            },
+             
+             {
+                                "type": "hidden",
+                                "data": {
+                                "value": "Out of scope Questions",
+                                "name": "CustomerMotive"
+                                }
+                            },
+             {
+                                "type": "hidden",
+                                "data": {
+                                "value": question,
+                                "name": "Requested Question"
+                                }
+                            },
+            {
+                "data": {
+                    "name": "Submit",
+                    "action": {
+                        "message": "Submit",
+                        "formAction": os.getenv("domainUrl")+"webhook/smarti/formdata"
+                    },
+                    "type": "submit"
+                },
+                "type": "submit"
+            }
+        ],
+                "templateId": "12"
+            },
+            "platform": "kommunicate"
+        }]
+    return json
