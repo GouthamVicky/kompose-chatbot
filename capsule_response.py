@@ -7,7 +7,7 @@ from datetime import datetime
 load_dotenv()
 
 def lead_form_creation(userId,serviceid):
-    message="Our experts are on standby to answer any other questions you have. Please provide your details in the below given form" 
+    message="Our Experts are ready to answer any inquiries you may have. Please complete the form below with your information" 
     json= [
                         {
                             "message": 
@@ -78,7 +78,7 @@ def lead_form_creation(userId,serviceid):
 
 
 def lead_form_creation_textarea(userId,serviceid):
-    message="Our experts are on standby to answer any other questions you have. Please provide your details in the below given form" 
+    message="Our Experts are ready to answer any inquiries you may have. Please complete the form below with your information" 
     json=[
         {
                             "message": 
