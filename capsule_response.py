@@ -7,7 +7,7 @@ from datetime import datetime
 load_dotenv()
 
 def lead_form_creation(userId,serviceid):
-    message="Our experts are ready to assist you. To begin speaking with one of our experts, please fill out the form below" 
+    message="Our experts are ready to assist you. To begin speaking with one of our expert, please fill out the form below" 
     json= [
                         {
                             "message": 
@@ -78,7 +78,7 @@ def lead_form_creation(userId,serviceid):
 
 
 def lead_form_creation_textarea(userId,serviceid):
-    message="Our experts are ready to assist you. To begin speaking with one of our experts, please fill out the form below" 
+    message="Our experts are ready to assist you. To begin speaking with one of our expert, please fill out the form below" 
     json=[
         {
                             "message": 
@@ -95,7 +95,7 @@ def lead_form_creation_textarea(userId,serviceid):
                             "cols": 10,
                             "validation": {
                                 "regex": "^[^*|\\\":<>[\\]{}`\\\\()';@&$]+$",
-                                "errorText": "special characters not allowed"
+                                "errorText": "To assist you effectively, please submit the query in detail with no special characters in it"
                             },
                             "title": "Please Type in your Query",
                             "name": "textarea",
