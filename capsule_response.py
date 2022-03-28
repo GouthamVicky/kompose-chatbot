@@ -93,7 +93,10 @@ def lead_form_creation_textarea(userId,serviceid):
                         "type": "textarea",
                         "data": {
                             "cols": 10,
-                            
+                            "validation": {
+                                "regex": "^[^*|\\\":<>[\\]{}`\\\\()';@&$]+$",
+                                "errorText": "special characters not allowed"
+                            },
                             "title": "Please Type in your Query",
                             "name": "textarea",
                             "rows": 4,
