@@ -141,18 +141,19 @@ async def session_predict(request:Request):
     current =str(future_date_and_time)
     print(current)
     output_json['timeStamp']=current
-    output_json['Mobile Number']=output_json['PhoneNumber']
+    
+    output_json['PhoneNumber']=output_json['Mobile Number']
     #output_json['Mobile Number']
     print(output_json)
     #json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
-    '''print("CREATING TICKET ID FOR CUSTOMER")
-    result=idgeneration(Email, PhoneNumber,json,serviceId)
+    print("CREATING TICKET ID FOR CUSTOMER")
+    result=idgeneration(output_json['Email'], output_json['PhoneNumber'],output_json,output_json['serviceId'])
     print(result)
     print("STORING DATA IN MONGO DB ")
-    store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
+    store_data=db.insert_one({"EmailId":output_json['Email'],"PhoneNumber": output_json['PhoneNumber'],"timeStamp":current,"SessionID":output_json['sessionID'],"serviceId":output_json['serviceId'],"ticketID":result['ticketId'],"paymentUrl":result['url']})
     print(store_data)
     
-    return json'''
+    return json
 
 
 
