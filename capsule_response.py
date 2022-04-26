@@ -248,12 +248,12 @@ def demoform(userId):
                     {
                         "data": {
                             "placeholder": "Enter your Phone Number",
-                            "name": "Mobile Number",
+                            "name": "PhoneNumber",
                             "validation": {
                                 "errorText": "Please Enter Valid 10 Digit Mobile Number",
                                 "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
                             },
-                            "label": "PhoneNumber"
+                            "label": "Mobile Number"
                         },
                         "type": "text"
                     },
