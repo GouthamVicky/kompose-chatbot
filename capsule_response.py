@@ -40,7 +40,7 @@ def lead_form_creation(userId,serviceid):
                                     "errorText": "Please provide a valid 10 digit mobile number",
                                     "regex": "\\b^[0][0-9]{10}\\b|\\b[0-9]{10}\\b"
                                 },
-                                "label":"Mobile Number"
+                                "label":"PhoneNumber"
                                 },
                                 
                                 "type": "text"
