@@ -123,10 +123,10 @@ async def root_smarti(arbitrary_json: JSONStructure = None):
     
 
 @app.post("/kompose/store/session")
-async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),sessionID: str = Form(...),serviceId: str = Form(...)):
+async def session_predict(request:Request):
 
     current_date_and_time = datetime.datetime.now()
-    print(sessionID)
+    
     hours = 5
     minutes =30
     hours_added = datetime.timedelta(hours = hours,minutes=minutes)
@@ -136,8 +136,14 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     
     current =str(future_date_and_time)
     print(current)
+    form_data=await request.form()
     
-    json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
+    form_data_keys=list(form_data.keys())
+    form_data_values=list(form_data.values())
+    output_json=dict(zip(form_data_keys, form_data_values))
+
+    print(output_json)
+    '''json= {"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId}
 
     print("CREATING TICKET ID FOR CUSTOMER")
     result=idgeneration(Email, PhoneNumber,json,serviceId)
@@ -146,7 +152,7 @@ async def session_predict(Email: str = Form(...),PhoneNumber: str = Form(...),se
     store_data=db.insert_one({"EmailId":Email,"PhoneNumber": PhoneNumber,"timeStamp":current,"SessionID":sessionID,"serviceId":serviceId,"ticketID":result['ticketId'],"paymentUrl":result['url']})
     print(store_data)
     
-    return json
+    return json'''
 
 
 
