@@ -151,10 +151,10 @@ async def session_predict(request:Request):
     print(result)
     print("STORING DATA IN MONGO DB ")
     
-    store_data=db.insert_one({"EmailId":output_json['Email']})
+    store_data=db.insert_one({"EmailId":output_json['Email'],"PhoneNumber": output_json['PhoneNumber'],"timeStamp":current,"SessionID":output_json['sessionID'],"serviceId":output_json['serviceId'],"ticketID":result['ticketId'],"paymentUrl":result['url']})
     print(store_data)
-    
-    return json
+    print (output_json)
+    return output_json
 
 
 
