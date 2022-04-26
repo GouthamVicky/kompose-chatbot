@@ -150,7 +150,7 @@ async def session_predict(request:Request):
     result=idgeneration(output_json['Email'], output_json['PhoneNumber'],output_json,output_json['serviceId'])
     print(result)
     print("STORING DATA IN MONGO DB ")
-    output_json['']
+    
     store_data=db.insert_one({"EmailId":output_json['Email']})
     print(store_data)
     
