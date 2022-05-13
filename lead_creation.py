@@ -64,7 +64,7 @@ def idgeneration(email,phone,obj,service_id):
     if result['data']['ticket']['id']:
       print("=========>NEW TICKET ID GENERATED<============")
       ticketId=result['data']['ticket']['id']
-      magickey=result['data']['customer']['magickey']
+      magickey=result['data']['ticket_magic_key']
   except Exception as e:
     print(str(e))
     pass
@@ -80,7 +80,7 @@ def idgeneration(email,phone,obj,service_id):
 
   print(ticketId)
   print(magickey)
-  paymentlandingpage=os.getenv('Paymenturl')+str(ticketId)+"&key="+str(magickey)
+  paymentlandingpage=os.getenv('Paymenturl')+str(magickey)
   print(paymentlandingpage)
   result={"ticketId":ticketId,"url":paymentlandingpage}
   return result
