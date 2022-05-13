@@ -64,7 +64,7 @@ def idgeneration(email,phone,obj,service_id):
     if result['data']['ticket']['id']:
       print("=========>NEW TICKET ID GENERATED<============")
       ticketId=result['data']['ticket']['id']
-      magickey=result['data']['ticket_magic_key']
+      magickey=result['data']['ticket']['ticket_magic_key']
   except Exception as e:
     print(str(e))
     pass
